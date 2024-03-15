@@ -3,6 +3,7 @@ package com.example.distribute_lock.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,7 +26,8 @@ public class Book {
     @JoinColumn(name = "stock_id", nullable = false)
     private Stock stock;
 
-    public Book(final String name, final int price, final Stock stock) {
+    @Builder
+    private Book(final String name, final int price, final Stock stock) {
         this.name = name;
         this.price = price;
         this.stock = stock;
