@@ -3,7 +3,6 @@ package com.example.distribute_lock.service;
 import com.example.distribute_lock.entity.Book;
 import com.example.distribute_lock.entity.Stock;
 import com.example.distribute_lock.repository.BookRepository;
-import com.example.distribute_lock.service.facade.BookLockFacade;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,9 +22,6 @@ class BookServiceTest {
 
     @Autowired
     private BookService bookService;
-
-    @Autowired
-    private BookLockFacade bookLockFacade;
 
     @Test
     void 동시성을_고려하지_않은_간단한_도서구매_요구사항_테스트() {
@@ -63,7 +59,7 @@ class BookServiceTest {
 
         for (int i = 0; i < 100; i++) {
             executorService.submit(() -> {
-                bookLockFacade.purchase(bookId, 1);
+                bookService.purchase(bookId, 1);
                 countDownLatch.countDown();
             });
         }

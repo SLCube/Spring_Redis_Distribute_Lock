@@ -25,6 +25,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.redisson:redisson-spring-boot-starter:3.18.0'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "it.ozimov:embedded-redis:0.7.2"
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
